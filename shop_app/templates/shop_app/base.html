@@ -1,0 +1,57 @@
+{% load static %}
+{% load shop_app_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {{ title }} {% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'shop_app/css/shop.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'shop_app/images/main.ico' %}" type="image/x-icon"/>
+    {% block head %} {% endblock head %}
+
+</head>
+<body>
+
+    {% block mainmenu %}
+
+
+    <div class="main">
+        <div class="header">
+
+            <ul id="mainmenu" class="mainmenu">
+                <li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
+                <li><a href="{% url 'home' %}" class="underline-one">Главная страница</a></li>
+                <li><a href="{% url 'about' %}" class="underline-one">О нас</a></li>
+                <li><a href="{% url 'feedback' %}" class="underline-one">Оставить отзыв</a></li>
+
+            </ul>
+
+        </div>
+
+        {% block content %}
+
+         {% endblock content %}
+    </div>
+
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <h4>Марка телефона</h4>
+        <hr>
+        {% get_marks as marks %}
+        {% for c in marks %}
+        <a href="{{ c.get_absolute_url }}">{{ c }}</a>
+
+
+        {% endfor %}
+
+    </div>
+    {% endblock mainmenu %}
+
+
+
+
+
+</body>
+</html>

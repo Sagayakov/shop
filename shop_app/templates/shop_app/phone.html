@@ -1,0 +1,20 @@
+{% extends 'shop_app/base.html' %}
+
+{% block content %}
+
+
+
+{% if phone.photo %}
+    <img class="img-article-left" src="{{phone.photo.url}}" alt="Фото телефона">
+{% endif %}
+<h2>{{ phone.mark_p }} {{ phone.model_p.upper }}</h2>
+
+{% if phone.discount_p %}
+    <p class="link-price"><a href="#">Стоимость {{ phone.get_disc_price }}</a></p>
+    <strike><p class="link-price-disc"><a href="#">Стоимость {{ phone.price_p }}</a></p></strike>
+{% else %}
+    <p class="link-price"><a href="#">Стоимость {{ phone.price_p }}</a></p>
+{% endif %}
+{{ phone.description|linebreaks }}
+
+{% endblock %}

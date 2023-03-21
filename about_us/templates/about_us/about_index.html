@@ -1,0 +1,19 @@
+{% extends 'shop_app/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'about_us/abouts.css' %}">
+{% endblock %}
+
+{% block title %} О нас {% endblock %}
+
+{% block content %}
+    <h1>Информация о компании</h1>
+
+    <img src="https://fainaidea.com/wp-content/uploads/2017/12/o_kompanii.jpg" width="500" height="250" alt="о нас">
+    <h3>Телефон - +7-888-88-88</h3>
+    <h3>Email - example@gmail.com </h3>
+    <h3>Адрес - пр. Мира, дом 1, офис 123</h3>
+    <h3>Работаем по будням с 10 до 20</h3>
+{% endblock %}

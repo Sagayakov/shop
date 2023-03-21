@@ -1,0 +1,32 @@
+{% extends 'shop_app/base.html' %}
+
+
+{% block content %}
+
+    <h1>{{main_word}}</h1>
+<div class="container">
+
+    {% for ph in phone %}
+
+
+    <li>{% if ph.photo %}
+        <a href="{{ ph.get_absolute_url }}"><img class="img-article-left thumb" src="{{ph.photo.url}}" alt="Фото телефона"></a>
+    {% endif %}
+        <h3><a href="{{ ph.get_absolute_url }}">{{ ph.mark_p }} {{ ph.model_p.upper }}</a></h3>
+
+
+        {% if ph.discount_p %}
+            <p class="link-price"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.get_disc_price }}</a></p>
+            <strike><p class="link-price-disc"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.price_p }}</a></p></strike>
+        {% else %}
+            <p class="link-price"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.price_p }}</a></p>
+        {% endif %}
+        {{ ph.description|truncatewords:20 }}
+        <p class="link-button"><a href="{{ ph.get_absolute_url }}">Подробнее</a></p>
+    </li>
+
+
+    {% endfor %}
+
+</div>
+{% endblock %}

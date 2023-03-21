@@ -1,0 +1,17 @@
+{% extends 'shop_app/base.html' %}
+
+{% load static %}
+
+
+{% block title %} Hi test {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'shop_app/shop.css' %}">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a href="#">Menu</a>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    hi people
+{% endblock %}

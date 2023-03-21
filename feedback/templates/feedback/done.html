@@ -1,0 +1,16 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'feedback/forms.css' %}">
+
+{% endblock %}
+
+{% block title %} Отзыв принят {% endblock %}
+
+{% block content %}
+    <h2>Отзыв успешно принят. Благодарим за обратную связь</h2>
+<br><br><br><br><br><br><br>
+    <a href="/" class="underline-one">Вернуться на главную страницу</a>
+
+{% endblock %}
