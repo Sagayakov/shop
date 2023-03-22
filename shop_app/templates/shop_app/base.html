@@ -26,6 +26,12 @@
                 <li><a href="{% url 'about' %}" class="underline-one">О нас</a></li>
                 <li><a href="{% url 'feedback' %}" class="underline-one">Оставить отзыв</a></li>
 
+                {% if request.user.is_authenticated %}
+                    <li> {{user.username.title }} | <a href="{% url 'logout' %}" class="underline-one">Выйти</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}" class="underline-one">Регистрация</a> |
+                        <a href="{% url 'login' %}" class="underline-one">Войти</a></li>
+                {% endif %}
             </ul>
 
         </div>

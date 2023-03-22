@@ -278,3 +278,36 @@ li.paginatorr a.not_active {
 li.paginatorr a:hover {
   background-color: #eee;
 }
+
+.form-style {
+    margin-bottom: 1rem;
+}
+
+.form-style input {
+    font: inherit;
+    padding: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    display: block;
+    width: 10rem;
+}
+
+.form-style input:focus {
+    border-color: #1f0050;
+    background-color: #f4eeff;
+    outline: none;
+}
+
+.form-style label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#mainmenu li:last-child {
+    float: right;
+}
+
+.form-error {
+    color: red;
+}

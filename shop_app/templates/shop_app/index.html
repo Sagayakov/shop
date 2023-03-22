@@ -10,8 +10,8 @@
 
 
     <li>{% if ph.photo %}
-        <a href="{{ ph.get_absolute_url }}"><img class="img-article-left thumb" src="{{ph.photo.url}}" alt="Фото телефона"></a>
-    {% endif %}
+            <a href="{{ ph.get_absolute_url }}"><img class="img-article-left thumb" src="{{ph.photo.url}}" alt="Фото телефона"></a>
+        {% endif %}
         <h3><a href="{{ ph.get_absolute_url }}">{{ ph.mark_p }} {{ ph.model_p.upper }}</a></h3>
 
 
