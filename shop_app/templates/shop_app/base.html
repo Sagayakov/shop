@@ -32,7 +32,15 @@
 
         {% block content %}
 
-         {% endblock content %}
+        {% endblock content %}
+
+        <ul>
+            {% for p in paginator.page_range %}
+            <li>
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
     <!-- Side navigation -->
