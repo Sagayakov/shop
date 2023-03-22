@@ -244,3 +244,37 @@ img.img-article-left.thumb {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
+ul.paginator {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+li.paginatorr {
+  margin: 0 5px;
+}
+
+li.paginatorr a {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+li.paginatorr a.not_active {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid #333671;
+  color: #03111f;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+li.paginatorr a:hover {
+  background-color: #eee;
+}

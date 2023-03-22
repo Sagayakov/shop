@@ -53,6 +53,7 @@ class PhoneView(DetailView):
 
 
 class MarkView(ListView):
+    paginate_by = 4
     model = PhoneModel
     template_name = 'shop_app/index.html'
     context_object_name = 'phone'

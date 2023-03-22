@@ -30,17 +30,44 @@
 
         </div>
 
-        {% block content %}
+    {% block content %}
 
-        {% endblock content %}
+    {% endblock content %}
 
-        <ul>
+
+
+    {% if page_obj.has_other_pages %}
+        <ul class="paginator">
+
+<!--            выводит < при наличии стр слева-->
+            {% if page_obj.has_previous %}
+        <li class="paginatorr">
+            <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+        </li>
+            {% endif %}
+
+
             {% for p in paginator.page_range %}
-            <li>
+            <li class="paginatorr">
+            {% if page_obj.number == p %}
+                <a class="not_active">{{ p }}</a>
+<!--                выводит только макс 2х страниц слева и справа -->
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
                 <a href="?page={{ p }}">{{ p }}</a>
             </li>
+            {% endif %}
             {% endfor %}
+
+<!--            выводит > при наличии следующей стр справа-->
+            {% if page_obj.has_next %}
+            <li class="paginatorr">
+                <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+            </li>
+            {% endif %}
         </ul>
+
+    {% endif %}
+
     </div>
 
     <!-- Side navigation -->
