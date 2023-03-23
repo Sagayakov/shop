@@ -11,7 +11,7 @@ from .models import *
 class IndexView(ListView):
     """Вывод объектов на главную страницу"""
 
-    paginate_by = 4
+    paginate_by = 6
     model = PhoneModel
     template_name = 'shop_app/index.html'
     context_object_name = 'phone'
@@ -22,7 +22,7 @@ class IndexView(ListView):
 
     def get_queryset(self):
         """Фильтрует выдаваемые объекты моделей"""
-        return PhoneModel.objects.filter(is_public=True)
+        return PhoneModel.objects.filter(is_public=True).select_related('mark_p')
 
 
 # def index(request):
@@ -71,13 +71,13 @@ class MarkView(ListView):
     allow_empty = False  # если список пуст, выводит 404
 
     def get_queryset(self):
-        return PhoneModel.objects.filter(mark_p__slug=self.kwargs['mark_slug'], is_public=True)
+        return PhoneModel.objects.filter(mark_p__slug=self.kwargs['mark_slug'], is_public=True).select_related('mark_p')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['main_word'] = f'Все модели {self.get_queryset()[0].mark_p}'
-        context['title'] = f'Телефоны {context["phone"][0].mark_p}'
-        # наверное этот вариант более быстрый, нет вызова функции
+        name_model = context["phone"][0].mark_p
+        context['main_word'] = f'Все модели {name_model}'
+        context['title'] = f'Телефоны {name_model}'
         return context
 
 

@@ -16,7 +16,7 @@
 
 
         {% if ph.discount_p %}
-            <p class="link-price"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.get_disc_price }}</a></p>
+            <p class="link-price"><a href="{{ ph.get_absolute_url }}">Со скидкой {{ ph.get_disc_price }}</a></p>
             <strike><p class="link-price-disc"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.price_p }}</a></p></strike>
         {% else %}
             <p class="link-price"><a href="{{ ph.get_absolute_url }}">Стоимость {{ ph.price_p }}</a></p>
