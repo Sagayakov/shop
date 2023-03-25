@@ -1,4 +1,6 @@
 from django import forms
+from captcha.fields import CaptchaField
+
 from .models import FeedbackModel
 
 
@@ -6,6 +8,7 @@ class FeedbackForm(forms.ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #     self.fields['sex'].empty_label = 'пол'
+    captcha = CaptchaField()
 
     class Meta:
         model = FeedbackModel

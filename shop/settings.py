@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "debug_toolbar",
+    'debug_toolbar',
+    'captcha',
     'shop_app.apps.ShopAppConfig',
     'feedback.apps.FeedbackConfig',
     'about_us.apps.AboutUsConfig',
+
 ]
 
 MIDDLEWARE = [

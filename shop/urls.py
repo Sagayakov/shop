@@ -21,10 +21,10 @@ from shop import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('shop_app.urls')),
+    path('captcha/', include('captcha.urls')),
     path('feedback/', include('feedback.urls')),
     path('about/', include('about_us.urls')),
-
+    path('', include('shop_app.urls')),
 ]
 
 if settings.DEBUG:
