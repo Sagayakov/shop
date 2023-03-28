@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from django.views.decorators.cache import cache_page
+
+from .views import *
 
 urlpatterns = [
-    path('', views.FeedbackView.as_view(), name='feedback'),
-    path('done', views.DoneFeedbackView.as_view(), name='done')
+    path('', FeedbackView.as_view(), name='feedback'),
+    path('done', DoneFeedbackView.as_view(), name='done')
 ]

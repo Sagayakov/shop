@@ -13,7 +13,7 @@ class FeedbackView(CreateView):
     model = FeedbackModel
     form_class = FeedbackForm
     template_name = 'feedback/feedback.html'
-    success_url = reverse_lazy('done') # хардкод или лэйзи, просто реверс не успевает формировать ссылку
+    success_url = reverse_lazy('done')  # хардкод или лэйзи, просто реверс не успевает формировать ссылку
 
 
 class DoneFeedbackView(TemplateView):

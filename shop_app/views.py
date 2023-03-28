@@ -25,18 +25,6 @@ class IndexView(ListView):
         return PhoneModel.objects.filter(is_public=True).select_related('mark_p')
 
 
-# def index(request):
-#     phone = PhoneModel.objects.all()
-#
-#     context = {
-#         'phone': phone,
-#         'main_word': 'Все модели телефонов',
-#         'title': 'Главная страница'
-#     }
-#
-#     return render(request, 'shop_app/index.html', context=context)
-
-
 class PhoneView(DetailView):
     """Вывод одной модели телефона"""
 
@@ -49,16 +37,6 @@ class PhoneView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = f"{context['phone'].mark_p} {context['phone'].model_p.upper()}"
         return context
-
-
-# def show_phone(request, phone_slug):
-#     phone = get_object_or_404(PhoneModel, slug=phone_slug)
-#
-#     context = {
-#         'phone': phone,
-#         'title': f'{phone.mark_p} {phone.model_p.upper()}'
-#     }
-#     return render(request, 'shop_app/phone.html', context=context)
 
 
 class MarkView(ListView):
@@ -80,16 +58,6 @@ class MarkView(ListView):
         context['title'] = f'Телефоны {name_model}'
         return context
 
-
-# def show_mark(request, mark_slug):
-#     phone = PhoneModel.objects.filter(mark_p__slug=mark_slug)
-#
-#     context = {
-#         'phone': phone,
-#         'main_word': f'Все модели {phone[0].mark_p}',
-#         'title': f'Телефоны {phone[0].mark_p}'
-#     }
-#     return render(request, 'shop_app/index.html', context=context)
 
 class RegisterUser(CreateView):
     """Регистрация пользователя"""
@@ -121,3 +89,5 @@ def logout_user(request):
 
     logout(request)
     return redirect('login')
+
+
