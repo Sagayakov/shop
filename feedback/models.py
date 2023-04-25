@@ -1,8 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxValueValidator
-
-
-# from django.core.exceptions import ValidationError
 
 
 class FeedbackModel(models.Model):
@@ -21,6 +19,7 @@ class FeedbackModel(models.Model):
     photo = models.ImageField(upload_to='photos/feedback', verbose_name='Фото', null=True, blank=True)
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
 
     def __str__(self):
         return f'{self.name} {self.rating}'
@@ -28,11 +27,4 @@ class FeedbackModel(models.Model):
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-        ordering = ['-rating', 'name']
 
-    # def clean_feedback(self):
-    #     feedback = self.cleaned_data['feedback']
-    #     if len(feedback) > 1000:
-    #         raise ValidationError('Длина не может превышать 1000')
-    #
-    #     return feedback
