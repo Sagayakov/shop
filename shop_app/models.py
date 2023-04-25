@@ -34,7 +34,7 @@ class PhoneModel(models.Model):
     price_p = models.PositiveIntegerField(verbose_name='Стоимость')
     discount_p = models.PositiveIntegerField(null=True, blank=True, verbose_name='Скидка')
     slug = models.SlugField(null=False, db_index=True, unique=True, verbose_name='Ссылка')
-    photo = models.ImageField(upload_to='photos/phones', verbose_name='Фото')
+    photo = models.ImageField(upload_to='photos/phones', verbose_name='Фото', null=True, blank=True)
     is_public = models.BooleanField(default=True, verbose_name='Публикация')
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
