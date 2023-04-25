@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 
 from shop import settings
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),

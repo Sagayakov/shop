@@ -2,12 +2,15 @@
 from django.views.generic.edit import CreateView
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework import generics
 
 from .models import FeedbackModel
 from .forms import FeedbackForm
+from .permissions import *
+from .serializers import FeedbackSerializer
 
-
-# Create your views here.
 
 class FeedbackView(CreateView):
     model = FeedbackModel
@@ -18,3 +21,22 @@ class FeedbackView(CreateView):
 
 class DoneFeedbackView(TemplateView):
     template_name = 'feedback/done.html'
+
+
+class FeedbackAPIList(generics.ListCreateAPIView):
+    queryset = FeedbackModel.objects.all()
+    serializer_class = FeedbackSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class FeedbackAPIUpdate(generics.RetrieveUpdateAPIView):
+    queryset = FeedbackModel.objects.all()
+    serializer_class = FeedbackSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
+
+
+class FeedbackAPIDestroy(generics.RetrieveDestroyAPIView):
+    queryset = FeedbackModel.objects.all()
+    serializer_class = FeedbackSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+    authentication_classes = (TokenAuthentication,)

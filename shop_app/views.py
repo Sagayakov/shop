@@ -3,9 +3,13 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
+from rest_framework.response import Response
+from rest_framework import viewsets
+from rest_framework.decorators import action
 
 from .forms import *
 from .models import *
+from .serializers import ShopSerializer
 
 
 class IndexView(ListView):
@@ -91,3 +95,11 @@ def logout_user(request):
     return redirect('login')
 
 
+class ShopViewSet(viewsets.ModelViewSet):
+    queryset = PhoneModel.objects.all()
+    serializer_class = ShopSerializer
+
+    @action(methods=['get'], detail=True)
+    def mark(self, request, pk=None):
+        mark_it = MarkModel.objects.get(pk=pk)
+        return Response({'mark': mark_it.mark})
